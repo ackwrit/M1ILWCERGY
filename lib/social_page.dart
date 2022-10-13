@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:untitled/View/dashboard_view.dart';
+import 'package:untitled/View/register_View.dart';
 import 'package:untitled/services/FirestoreHelper.dart';
+import 'package:untitled/services/constants.dart';
 
 class SocialPageView extends StatefulWidget{
   @override
@@ -66,7 +69,17 @@ class SocialPageViewState extends State<SocialPageView>{
 
               ElevatedButton(
                   onPressed: (){
-                    FirestoreHelper().connect(mail, password);
+                    FirestoreHelper().connect(mail, password).then((value) {
+                      myGlobalUser = value;
+                      //aller sur la nouvelle page
+                      Navigator.push(context, MaterialPageRoute(
+                          builder: (context){
+                            return DashboardView();
+                          }
+                      ));
+                    }).catchError((error){
+                      //afficher popUP
+                    });
 
                   },
                   child: const Text("Connexion")
@@ -96,9 +109,14 @@ class SocialPageViewState extends State<SocialPageView>{
 
               TextButton(
                   onPressed: (){
+                    Navigator.push(context, MaterialPageRoute(
+                        builder: (context){
+                          return RegisterView();
+                        }
+                    ));
 
                   },
-                  child: Text("Inscription")
+                  child: const Text("Inscription")
               )
 
 
