@@ -19,6 +19,11 @@ class DashboardViewState extends State<DashboardView>{
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
+      drawer: Container(
+        color: Colors.purple,
+        width: MediaQuery.of(context).size.width/2,
+        height: MediaQuery.of(context).size.height,
+      ),
       body: bodyPage(pageIndex),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: pageIndex,

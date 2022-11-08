@@ -57,10 +57,18 @@ class FirestoreHelper{
 
 
   //mettre à jours les infos de l'utilisateurs
+  updateUser(String uid , Map<String,dynamic>map){
+    cloudUsers.doc(uid).update(map);
+  }
 
 
 
   //Supprimer l'utilisateur
+  deleteUser(){
+    cloudUsers.doc(auth.currentUser!.uid).delete();
+    auth.currentUser!.delete();
+
+  }
 
 
   //Stocker les images
