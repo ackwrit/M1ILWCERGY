@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:untitled/controller/AllFirebase_View.dart';
+import 'package:untitled/controller/MyDrawer.dart';
 import 'package:untitled/services/constants.dart';
 
 class DashboardView extends StatefulWidget{
@@ -23,6 +24,7 @@ class DashboardViewState extends State<DashboardView>{
         color: Colors.purple,
         width: MediaQuery.of(context).size.width/2,
         height: MediaQuery.of(context).size.height,
+        child: MyDrawer(),
       ),
       body: bodyPage(pageIndex),
       bottomNavigationBar: BottomNavigationBar(

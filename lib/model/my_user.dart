@@ -13,6 +13,11 @@ class MyUser {
   String? avatar;
   bool? genre;
 
+  //Getter
+  String get fullName {
+    return prenom +" "+ nom;
+}
+
 
   //Constructeur
   MyUser(DocumentSnapshot snapshot){
