@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:untitled/delay_animation.dart';
 import 'package:untitled/firebase_options.dart';
+import 'package:untitled/services/permission_handler.dart';
 import 'package:untitled/social_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 
@@ -10,6 +11,7 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  PermissionHandler().start();
   runApp(const MyApp());
 }
 
