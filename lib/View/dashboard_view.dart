@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:untitled/controller/AllFirebase_View.dart';
+import 'package:untitled/controller/MapsController.dart';
+import 'package:untitled/controller/MapsViewController.dart';
 import 'package:untitled/controller/MyDrawer.dart';
 import 'package:untitled/services/constants.dart';
 
@@ -66,7 +68,7 @@ class DashboardViewState extends State<DashboardView>{
     switch(pageChoix){
       case 0 : return Center(child: AllFirebaseView());
 
-    case 1 : return Center(child: Text("Ma deuxième page"));
+    case 1 : return MapsViewController();
 
     case 2 : return Center(child: Text("Ma 3eme page"));
 
