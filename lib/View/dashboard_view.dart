@@ -26,7 +26,12 @@ class DashboardViewState extends State<DashboardView>{
         height: MediaQuery.of(context).size.height,
         child: MyDrawer(),
       ),
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+      ),
       body: bodyPage(pageIndex),
+      backgroundColor: Colors.purple,
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: pageIndex,
         onTap: (value){
