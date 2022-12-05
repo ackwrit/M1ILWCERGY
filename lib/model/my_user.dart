@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:untitled/services/constants.dart';
 
 
@@ -9,9 +10,10 @@ class MyUser {
   late String nom;
   late String prenom;
   late String mail;
-  //gps,
+  Position? gps;
   String? avatar;
   bool? genre;
+  List? favoris;
 
   //Getter
   String get fullName {
@@ -24,11 +26,22 @@ class MyUser {
       bool? provisoireGenre;
       String? provisoirePseudo;
       String? provisoireAvatar;
+      List? provisoireFavoris;
       id = snapshot.id;
       Map<String,dynamic> map = snapshot.data() as Map<String,dynamic>;
       nom = map["NOM"];
       prenom = map["PRENOM"];
       mail = map["MAIL"];
+      gps = map["GPS"];
+
+      provisoireFavoris = map["FAVORIS"];
+      if(provisoireFavoris == null){
+        favoris = [];
+      }
+      else
+        {
+          favoris = provisoireFavoris;
+        }
 
       provisoirePseudo = map["PSEUDO"];
       if(provisoirePseudo == null){

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:untitled/controller/AllFavorisController.dart';
 import 'package:untitled/controller/AllFirebase_View.dart';
 import 'package:untitled/controller/MapsController.dart';
 import 'package:untitled/controller/MapsViewController.dart';
@@ -51,11 +52,11 @@ class DashboardViewState extends State<DashboardView>{
           ),
           BottomNavigationBarItem(
               icon: FaIcon(FontAwesomeIcons.map),
-              label: "Google"
+              label: "Maps"
           ),
           BottomNavigationBarItem(
-              icon: FaIcon(FontAwesomeIcons.amazon),
-              label: "amazon"
+              icon: FaIcon(FontAwesomeIcons.heart),
+              label: "Favoris"
           ),
 
         ],
@@ -70,7 +71,7 @@ class DashboardViewState extends State<DashboardView>{
 
     case 1 : return MapsViewController();
 
-    case 2 : return Center(child: Text("Ma 3eme page"));
+    case 2 : return AllFavorisController();
 
       default : return Center(child: Text("Aucune page"));
 
