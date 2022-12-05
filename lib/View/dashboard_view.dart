@@ -48,7 +48,7 @@ class DashboardViewState extends State<DashboardView>{
             label: "Facebook"
           ),
           BottomNavigationBarItem(
-              icon: FaIcon(FontAwesomeIcons.google),
+              icon: FaIcon(FontAwesomeIcons.map),
               label: "Google"
           ),
           BottomNavigationBarItem(

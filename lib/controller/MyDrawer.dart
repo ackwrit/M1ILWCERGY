@@ -2,6 +2,7 @@ import 'dart:typed_data';
 import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:untitled/services/FirestoreHelper.dart';
 import 'package:untitled/services/constants.dart';
 import 'package:file_picker/file_picker.dart';
 
@@ -61,8 +62,20 @@ class _MyDrawerState extends State<MyDrawer> {
                       },
                       child: Text("Annulation")),
                   TextButton(
-                      onPressed: (){
+                      onPressed: () async {
                         //Enregistrement de la photo sur le serveur
+                        urlImage = await FirestoreHelper().stockageImage(nameImage!, bytesData!);
+                        setState((){
+                          myGlobalUser.avatar = urlImage;
+                        });
+                        Map<String,dynamic> map = {
+                          "AVATAR":urlImage
+                        };
+                        FirestoreHelper().updateUser(myGlobalUser.id, map);
+                        Navigator.pop(context);
+
+
+
 
                       },
                       child: Text("Validation")
@@ -83,8 +96,17 @@ class _MyDrawerState extends State<MyDrawer> {
                         },
                         child: Text("Annulation")),
                     TextButton(
-                        onPressed: (){
+                        onPressed: () async{
                           //Enregistrement de la photo sur le serveur
+                          urlImage = await FirestoreHelper().stockageImage(nameImage!, bytesData!);
+                          setState((){
+                            myGlobalUser.avatar = urlImage;
+                          });
+                          Map<String,dynamic> map = {
+                            "AVATAR":urlImage
+                          };
+                          FirestoreHelper().updateUser(myGlobalUser.id, map);
+                          Navigator.pop(context);
 
                         },
                         child: Text("Validation")

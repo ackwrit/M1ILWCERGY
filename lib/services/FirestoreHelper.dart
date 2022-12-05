@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -72,5 +74,13 @@ class FirestoreHelper{
 
 
   //Stocker les images
+  Future <String>stockageImage(String nameImage,Uint8List data) async{
+    //Stocker l'image dans la base
+    TaskSnapshot snapshot = await storage.ref("profil/$nameImage").putData(data);
+    //récupérer le lien de l'image dans la base de donnée
+    String urlImage = await snapshot.ref.getDownloadURL();
+    return urlImage;
+
+  }
 
 }
