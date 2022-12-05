@@ -21,7 +21,7 @@ class _DetailViewControllerState extends State<DetailViewController> {
     //Nom et le prénom de la personne
     //Son pseudo
     // Son avatar
-    // bouton cliquable pour tchatter
+    // bouton cliquable pour Tchatter
     //Bouton cliquable pour ajouter en favoris l'utilisateur
 
     return Text("Je suis dans la nouvlle page");
