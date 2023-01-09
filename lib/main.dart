@@ -8,6 +8,7 @@ import 'package:firebase_core/firebase_core.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  //Initialisation de Firebase avant le lancement de l'application
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
