@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:untitled/model/my_user.dart';
+import 'package:untitled/services/FirestoreHelper.dart';
+import 'package:untitled/services/constants.dart';
 
 class DetailViewController extends StatefulWidget {
   MyUser monUtilisateur;
@@ -11,6 +13,20 @@ class DetailViewController extends StatefulWidget {
 }
 
 class _DetailViewControllerState extends State<DetailViewController> {
+
+  bool present = false;
+
+  //fonction
+  bool Recherche(String identifiant){
+    return myGlobalUser.favoris!.contains(identifiant);
+  }
+
+  @override void initState() {
+    // TODO: implement initState
+    present = Recherche(widget.monUtilisateur.id);
+    super.initState();
+
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,9 +34,18 @@ class _DetailViewControllerState extends State<DetailViewController> {
         actions: [
           IconButton(
               onPressed: (){
-                print("Je clique mon favoris");
+                if(!present){
+                  //Ajouter dans ma variable
+                  myGlobalUser.favoris!.add(widget.monUtilisateur.id);
+                  //Ajouter la nouvelle liste de favoris dans ma base de donnée
+                  Map<String,dynamic> map = {
+                    "FAVORIS": myGlobalUser.favoris!
+                  };
+                  FirestoreHelper().updateUser(myGlobalUser.id, map);
+
+                }
               },
-              icon: const FaIcon(FontAwesomeIcons.heartCircleCheck,color: Colors.red,)
+              icon: present ? Container(): const FaIcon(FontAwesomeIcons.heartCircleCheck,color: Colors.red,)
           ),
         ],
       ),
