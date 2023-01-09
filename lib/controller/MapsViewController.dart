@@ -18,10 +18,12 @@ class _MapsViewControllerState extends State<MapsViewController> {
         future: LocationManager().start() ,
         builder: (context,position){
           if(position.hasData){
+            //Si il arrive à trouver une position GPS alors affiche la carte
             return MapsController(maPosition: position.data!,);
           }
           else
             {
+              // Pas trouver de position GPS
               return NoDataMapsController();
             }
         },
