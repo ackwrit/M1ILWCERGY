@@ -1,3 +1,5 @@
+
+
 import 'package:geolocator/geolocator.dart';
 
 
@@ -5,16 +7,12 @@ class LocationManager{
 
 
   //Méthode
+
+
   Future<Position> start() async{
-    //Vérifier si l'utilisateur a activé la localisation et son gps
-    bool locationEnabled = await Geolocator.isLocationServiceEnabled();
-    /*if(locationEnabled == true){
-      return await handlePermission();
-    }
-    else {
-      return await errorString("La localisation n'est pas activé");
-    }*/
-    return (locationEnabled) ? await handlePermission(): await errorString("La localisation n'est pas activé");
+    bool enabled =  await Geolocator.isLocationServiceEnabled();;
+    LocationPermission permission = await Geolocator.checkPermission();
+    return enabled ? handlePermission() : resultatPermission(permission);
   }
 
   Future<Position>handlePermission() async{

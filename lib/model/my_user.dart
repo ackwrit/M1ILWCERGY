@@ -82,4 +82,18 @@ class MyUser {
 
 
   //Méthode
+
+  Map<String,dynamic> toMap(){
+    Map<String,dynamic> map;
+    return map = {
+      "NOM":nom,
+      "PRENOM": prenom,
+      "AVATAR":avatar,
+      "PSEUDO":pseudo,
+      "MAIL":mail,
+      "GPS":gps,
+      "GENRE":genre,
+      "FAVORIS":favoris
+    };
+  }
 }

@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:untitled/model/my_user.dart';
 import 'package:untitled/services/FirestoreHelper.dart';
 import 'package:untitled/services/constants.dart';
+import 'package:untitled/controller/chatController.dart';
 
 class DetailViewController extends StatefulWidget {
   MyUser monUtilisateur;
@@ -84,7 +85,11 @@ class _DetailViewControllerState extends State<DetailViewController> {
 
               ),
                 onPressed: (){
-                  print("Je veux chatter");
+                  Navigator.push(context, MaterialPageRoute(
+                      builder: (context){
+                        return ChatController(emmetteur: myGlobalUser,destinataire: widget.monUtilisateur);
+                      }
+                  ));
                 },
                 child: Text("Chat")
             ),

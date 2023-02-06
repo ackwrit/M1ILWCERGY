@@ -17,6 +17,7 @@ class DelayAnimation extends StatefulWidget{
 class DelayAnimationState extends State<DelayAnimation> with SingleTickerProviderStateMixin{
   late AnimationController animationController;
   late Animation<Offset> animationOffset;
+  late Animation<double>animationRotate;
   @override
   void initState(){
     super.initState();
@@ -33,6 +34,8 @@ class DelayAnimationState extends State<DelayAnimation> with SingleTickerProvide
         begin: const Offset(0.0,0.3),
         end: Offset.zero
     ).animate(curve);
+
+
 
     Timer(Duration(milliseconds: widget.duration), () {
       animationController.forward();
